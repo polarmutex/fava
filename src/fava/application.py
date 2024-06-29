@@ -30,7 +30,6 @@ from urllib.parse import urlunparse
 
 import markdown2  # type: ignore[import-untyped]
 from beancount import __version__ as beancount_version
-from beancount.utils.text_utils import replace_numbers
 from flask import abort
 from flask import current_app
 from flask import Flask
@@ -63,6 +62,17 @@ from fava.util import send_file_inline
 from fava.util import setup_logging
 from fava.util import slugify
 from fava.util.excel import HAVE_EXCEL
+
+def replace_number(match):
+    """Replace a single number matched from text into X'es.
+    'match' is a MatchObject from a regular expressions match.
+    (Use this with re.sub()).
+    Args:
+      match: A MatchObject.
+    Returns:
+      A replacement string, consisting only of X'es.
+    """
+    return re.sub('[0-9]', 'X', match.group(1)) + match.group(2)
 
 if TYPE_CHECKING:  # pragma: no cover
     from typing import Iterable

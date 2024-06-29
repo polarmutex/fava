@@ -6,8 +6,8 @@ from typing import Any
 from typing import TYPE_CHECKING
 
 from beancount.core import compare  # type: ignore[attr-defined]
-from beancount.query import query  # type: ignore[attr-defined]
-from beancount.query import query_execute  # type: ignore[attr-defined]
+from beanquery import query  # type: ignore[attr-defined]
+from beanquery import query_execute  # type: ignore[attr-defined]
 
 if TYPE_CHECKING:  # pragma: no cover
     from typing import TypeAlias
